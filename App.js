@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { React } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Text, View } from 'react-native';
+import Tarefa from "./src/pages/Tarefas";
+import NovaTarefa from "./src/pages/NovaTarefa";
+import Detalhes from "./src/pages/Detalhes";
 
 export default function App() {
+  const Stack = createStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Tarefa'>
+        <Stack.Screen
+          name="Tarefas"
+          component={Tarefa}
+          options={{
+            headerTintColor: "#f92e6a"
+          }}
+        />
+
+        <Stack.Screen
+          name="Novas Tarefas"
+          component={NovaTarefa}
+          options={{
+            headerTintColor: "#f92e6a"
+          }}
+        />
+
+        <Stack.Screen
+          name="Detalhes"
+          component={Detalhes}
+          options={{
+            headerTintColor: "#f92e6a"
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
